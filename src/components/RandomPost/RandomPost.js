@@ -5,3 +5,5 @@ const RandomPost = () => {
 
     return <h1>Random post</h1>
 }
+
+export default RandomPost
