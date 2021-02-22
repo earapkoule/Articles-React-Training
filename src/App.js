@@ -23,7 +23,7 @@ function App() {
         <hr />
 
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/" component={HomePage}>
  
           </Route>
           <Route path="/:category" render={(props) => { (<BlogPage category={props.match.params.category} />) }}>
