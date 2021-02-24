@@ -1,29 +1,43 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
- 
+import { NavLink } from "react-router-dom";
+import React from "react";
+import styles from "./NavBar.module.css";
+
 const NavBar = () => {
-    console.log('This is a Navbar');
-    return (
-    <ul>
-        <li>
-            <Link to="/">Home</Link>
-        </li>
-        <li>
-            <Link to="/lifestyle">Life style</Link>
-        </li>
-        <li>
-            <Link to="/travel">Travel</Link>
-        </li>
-        <li>
-            <Link to="/fashion">Fashion</Link>
-        </li>
-        <li>
-            <Link to="/gallery">Gallery</Link>
-        </li>
-        <li>
-            <Link to="/contact">Contact</Link>
-        </li>
-    </ul>);
-}
+  console.log("This is a Navbar");
+  return (
+    <ul className={styles.navList}>
+      <li>
+        <NavLink exact to="/" activeClassName={styles.red}>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/lifestyle" activeClassName={styles.red}>
+          Life style
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/travel" activeClassName={styles.red}>
+          Travel
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/fashion" activeClassName={styles.red}>
+          Fashion
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/gallery" activeClassName={styles.red}>
+          Gallery
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact" activeClassName={styles.red}>
+          Contact
+        </NavLink>
+      </li>
+    </ul>
+  );
+};
 
 export default NavBar;
