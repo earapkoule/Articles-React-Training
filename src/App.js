@@ -1,27 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import HomePage from './pages/HomePage'
-import BlogPage from './pages/BlogPage'
-import ContactPage from './pages/ContactPage'
-
-import NavBar from './components/NavBar/NavBar.js'
-
-const BlogPage = () => {
-  return <h1>Hello blogpage</h1>;
-};
-const categoryPaths = [
-  "/fashion",
-  "/lifestyle",
-  "/travel",
-  "/gallery",
-  "/contact",
-];
-const postPaths = categoryPaths.map((path) => path + "/:id");
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import BlogPage from "./pages/BlogPage";
+import ContactPage from "./pages/ContactPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import NavBar from "./components/NavBar/NavBar";
+import { CATEGORY_PATHS, POST_PATHS } from "./utils/apiRoutes";
 
 function App() {
   return (
@@ -29,20 +13,18 @@ function App() {
       <div>
         <NavBar />
 
-        <Switch>                                           
+        <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/contact"></Route>
+          <Route path="/contact" component={ContactPage} />
           <Route
             exact
-            path={categoryPaths}
+            path={CATEGORY_PATHS}
             render={(props) => {
               return <BlogPage category={props.match.params.category} />;
             }}
           ></Route>
-          <Route exact path={postPaths}></Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
+          <Route exact path={POST_PATHS} />
+          <Route component={NotFoundPage} />
         </Switch>
       </div>
     </Router>
