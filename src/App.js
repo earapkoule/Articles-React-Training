@@ -1,9 +1,15 @@
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import HomePage from './pages/HomePage'
+import BlogPage from './pages/BlogPage'
+import ContactPage from './pages/ContactPage'
 
-import NavBar from "./components/NavBar/NavBar.js";
-import NotFound from "./components/NotFound/NotFound.js";
-import React from "react";
-import ReactDOM from "react-dom";
+import NavBar from './components/NavBar/NavBar.js'
 
 const BlogPage = () => {
   return <h1>Hello blogpage</h1>;
@@ -23,8 +29,8 @@ function App() {
       <div>
         <NavBar />
 
-        <Switch>
-          <Route exact path="/"></Route>
+        <Switch>                                           
+          <Route exact path="/" component={HomePage} />
           <Route path="/contact"></Route>
           <Route
             exact
