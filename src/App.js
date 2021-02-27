@@ -11,27 +11,37 @@ import ContactPage from './pages/ContactPage'
 
 import NavBar from './components/NavBar/NavBar.js'
 
+const BlogPage = () => {
+  return <h1>Hello blogpage</h1>;
+};
+const categoryPaths = [
+  "/fashion",
+  "/lifestyle",
+  "/travel",
+  "/gallery",
+  "/contact",
+];
+const postPaths = categoryPaths.map((path) => path + "/:id");
+
 function App() {
   return (
     <Router>
       <div>
-        {/*
-          auto tha ginei to navbar component
-        */}
-        <NavBar></NavBar>
+        <NavBar />
 
-        <hr />
-
-        <Switch>
+        <Switch>                                           
           <Route exact path="/" component={HomePage} />
-
-          <Route path="/:category" render={(props) => { (<BlogPage category={props.match.params.category} />) }}>
-          </Route>
-          <Route path="/:category/:id"  >
-
-          </Route>
-          <Route path="/contact">
-
+          <Route path="/contact"></Route>
+          <Route
+            exact
+            path={categoryPaths}
+            render={(props) => {
+              return <BlogPage category={props.match.params.category} />;
+            }}
+          ></Route>
+          <Route exact path={postPaths}></Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </div>
