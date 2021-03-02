@@ -9,10 +9,10 @@ export function getPopularPosts(tag) {
     if (tag) params.tag = tag;
     urlSafe.search = new URLSearchParams(params).toString();
 
-    setTimeout(async () => {
-      const response = await fetch(urlSafe);
-      const responseJson = await response.json();
-      dispatch(setPopularPosts(responseJson));
-    }, 5000);
+    // setTimeout(async () => {
+    const response = await fetch(urlSafe);
+    const responseJson = await response.json();
+    dispatch(setPopularPosts(responseJson));
+    // }, 1000);
   };
 }

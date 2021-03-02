@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const PopularPosts = (props) => {
   const dispatch = useDispatch();
-  const popularPosts = useSelector((state) => state.popularPosts);
+  const popularPosts = useSelector((state) => state.popularPosts.popularPosts);
 
   useEffect(() => {
     dispatch(getPopularPosts(props.tag));
