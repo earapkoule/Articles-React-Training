@@ -1,30 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { getPopularPosts } from "../../store/popularPosts/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const PopularPosts = (props) => {
-  const [articles, setArticles] = useState([]);
+  const dispatch = useDispatch();
+  const popularPosts = useSelector((state) => state.popularPosts);
 
-  useEffect(
-    function () {
-      async function fetchData() {
-        const urlSafe = new URL("https://dev.to/api/articles");
-        const params = { top: "" };
-        if (props.tag) params.tag = props.tag;
-        urlSafe.search = new URLSearchParams(params).toString();
+  useEffect(() => {
+    dispatch(getPopularPosts(props.tag));
+  }, [props.tag]);
 
-        setTimeout(async () => {
-          const response = await fetch(urlSafe);
-          const responseJson = await response.json();
-          setArticles(responseJson);
-          console.log("articles", responseJson);
-        }, 5000);
-      }
-      fetchData();
-    },
-    [props.tag]
-  );
   return (
     <div>
-      {articles.length > 0 ? articles[0].title : "articles not available"}
+      {popularPosts.slice(0, 4).map((post) => (
+        <div key={post.id}>
+          <img src={post.social_image} />
+          <h2>{post.title}</h2>
+        </div>
+      ))}
     </div>
   );
 };
