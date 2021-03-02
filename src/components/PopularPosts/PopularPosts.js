@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { getPopularPosts } from "../../store/popularPosts/actions";
+import { getPopularPosts } from "../../store/posts/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const PopularPosts = (props) => {
   const dispatch = useDispatch();
-  const popularPosts = useSelector((state) => state.popularPosts.popularPosts);
+  const popularPosts = useSelector((state) => state.posts.popularPosts);
 
   useEffect(() => {
     dispatch(getPopularPosts(props.tag));

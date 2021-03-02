@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
-  console.log("This is a Navbar");
   return (
     <ul className={styles.navList}>
       <li>
