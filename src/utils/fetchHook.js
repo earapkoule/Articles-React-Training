@@ -13,8 +13,8 @@ function useFetch(url, tags = ''){
         const response = await fetch(urlSafe);
         console.log('response', response);
         const json = await response.json();
-console.log('json', json);
-        
+        console.log('json', json);
+
         setData(json);
         setLoading(false);
     }
