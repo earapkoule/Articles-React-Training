@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import PostPage from "./pages/PostPage/PostPage";
 import NavBar from "./components/NavBar/NavBar";
 import { CATEGORY_PATHS, POST, CONTACT, GALLERY } from "./utils/apiRoutes";
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { useDispatch } from "react-redux";
 import { getAllPosts } from "./store/posts/actions";
 import { theme } from "./config";
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+    <CssBaseline />
       <Router>
         <div>
           <NavBar />

@@ -14,7 +14,6 @@ function useFetch(url, tags = ''){
         console.log('response', response);
         const json = await response.json();
         console.log('json', json);
-
         setData(json);
         setLoading(false);
     }
