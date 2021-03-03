@@ -1,40 +1,40 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import logo from "../../images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     height: 102,
-      textAlign: "center"
+    textAlign: "center",
   },
-    links: {
+  links: {
     marginRight: theme.spacing(2),
     color: theme.palette.header.secondary,
-    textDecoration: 'none',
-    textTransform: 'uppercase',
-    fontWeight: 'bold'
+    textDecoration: "none",
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
-  activeLink:{
+  activeLink: {
     color: theme.palette.header.primary,
-    borderTop: '5px solid ' + theme.palette.header.primary,
-    padding: '34px 10px 0 10px'
+    borderTop: "5px solid " + theme.palette.header.primary,
+    padding: "34px 10px 0 10px",
   },
   title: {
     flexGrow: 1,
-    
-  },navbar:{
-      height: 102,
-      justifyContent: "center",
-   },
-    logo: {
-      maxWidth: 212,
-      marginRight: '10px'
-    }
+  },
+  navbar: {
+    height: 102,
+    justifyContent: "center",
+  },
+  logo: {
+    maxWidth: 212,
+    marginRight: "10px",
+  },
 }));
 
 const NavBar = () => {
@@ -44,42 +44,78 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar position="static" color="transparent" className={classes.navbar}>
         <Toolbar>
-          <img src={logo} alt="Intrasoft International" className={classes.logo} />
+          <img
+            src={logo}
+            alt="Intrasoft International"
+            className={classes.logo}
+          />
           <Typography variant="h6" className={classes.title}>
-            <NavLink exact to="/" className={classes.links} activeClassName={classes.activeLink}>
+            <NavLink
+              exact
+              to="/"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
               Home
             </NavLink>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            <NavLink to="/lifestyle" className={classes.links} activeClassName={classes.activeLink}>
+            <NavLink
+              to="/lifestyle"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
               Life style
-           </NavLink>
+            </NavLink>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            <NavLink to="/travel" className={classes.links} activeClassName={classes.activeLink}>
+            <NavLink
+              to="/travel"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
               Travel
             </NavLink>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            <NavLink to="/fashion" className={classes.links} activeClassName={classes.activeLink}>
+            <NavLink
+              to="/fashion"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
               Fashion
-        </NavLink>
+            </NavLink>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            <NavLink to="/gallery" className={classes.links} activeClassName={classes.activeLink}>
+            <NavLink
+              to="/gallery"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
               Gallery
-        </NavLink>
+            </NavLink>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            <NavLink to="/contact" className={classes.links} activeClassName={classes.activeLink}>
+            <NavLink
+              to="/contact"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
               Contact
-        </NavLink>
+            </NavLink>
           </Typography>
-          
+          <Typography variant="h6" className={classes.title}>
+            <NavLink
+              to="/create-new"
+              className={classes.links}
+              activeClassName={classes.activeLink}
+            >
+              Create Article
+            </NavLink>
+          </Typography>
         </Toolbar>
       </AppBar>
     </div>
-
   );
 };
 

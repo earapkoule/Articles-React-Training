@@ -7,12 +7,19 @@ import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PostPage from "./pages/PostPage/PostPage";
 import NavBar from "./components/NavBar/NavBar";
-import { CATEGORY_PATHS, POST, CONTACT, GALLERY } from "./utils/apiRoutes";
-import CssBaseline from '@material-ui/core/CssBaseline';
+import {
+  CATEGORY_PATHS,
+  POST,
+  CONTACT,
+  GALLERY,
+  CREATE_NEW,
+} from "./utils/apiRoutes";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { useDispatch } from "react-redux";
 import { getAllPosts } from "./store/posts/actions";
 import { theme } from "./config";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import NewPostPage from "./pages/NewPostPage/NewPostPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +27,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <CssBaseline />
+      <CssBaseline />
       <Router>
         <div>
           <NavBar />
@@ -36,7 +43,8 @@ function App() {
                 return <BlogPage category={props.match.params.category} />;
               }}
             ></Route>
-            <Route exact path={POST} component={PostPage} />
+            <Route path={POST} component={PostPage} />
+            <Route path={CREATE_NEW} component={NewPostPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
