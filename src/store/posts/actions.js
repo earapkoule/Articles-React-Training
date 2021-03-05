@@ -45,6 +45,9 @@ export async function createPost(postObject) {
     body: JSON.stringify(postObject),
   };
   const response = await fetch("https://dev.to/api/articles/", requestOptions);
-  const responseJson = await response.json();
-  return responseJson;
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw new Error("Something went wrong");
+  }
 }

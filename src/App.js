@@ -36,13 +36,7 @@ function App() {
             <Route exact path="/" component={HomePage} />
             <Route path={CONTACT} component={ContactPage} />
             <Route path={GALLERY} component={GalleryPage} />
-            <Route
-              exact
-              path={CATEGORY_PATHS}
-              render={(props) => {
-                return <BlogPage category={props.match.params.category} />;
-              }}
-            ></Route>
+            <Route path={CATEGORY_PATHS} component={BlogPage} />
             <Route path={POST} component={PostPage} />
             <Route path={CREATE_NEW} component={NewPostPage} />
             <Route component={NotFoundPage} />
