@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.h3.fontSize,
     color: theme.palette.header.mainPost,
   },
+  mainParsedPost: {
+    color: theme.palette.text.primary,
+    fontSize: "18px",
+  },
   chipCustom: {
     display: "flex",
     alignItems: "center",
@@ -55,7 +59,6 @@ const PostPage = () => {
   useEffect(() => {
     getPostById(id).then((response) => setPost(response));
   }, []);
-  console.log("post", post);
   return (
     post && (
       <React.Fragment>
@@ -88,7 +91,7 @@ const PostPage = () => {
                 style={{ marginLeft: "18px" }}
               >
                 {" "}
-                {post.user.name}
+                {post && post.user ? post.user.name : ""}
               </Typography>
               <Typography
                 className={classes.mainPost.content}
@@ -119,19 +122,13 @@ const PostPage = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} className={classes.root}>
-              <Typography
-                className={classes.mainPost.content}
-                variant="body2"
-                component="p"
-                style={{ marginLeft: "18px" }}
-              >
-                {" "}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.body_html,
-                  }}
-                ></div>
-              </Typography>
+              {" "}
+              <div
+                className={classes.mainParsedPost}
+                dangerouslySetInnerHTML={{
+                  __html: post.body_html,
+                }}
+              ></div>
             </Grid>
           </Grid>
           <Grid item xs={2}>
