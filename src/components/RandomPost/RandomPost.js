@@ -43,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
 const randomizer = (minimum, maximum, allPosts) => {
   const randomNumber =
     Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-  //console.log(allPosts);
+  //Cover Image guard
+  if (allPosts[randomNumber] && !allPosts[randomNumber].cover_image) {
+    return randomizer(minimum, maximum, allPosts);
+  }
   return allPosts[randomNumber];
 };
 
@@ -59,7 +62,7 @@ const RandomPost = () => {
   }, [loading]);
   return (
     <div className={classes.root}>
-      <h1 className={classes.randomPostHeader}>Random post</h1>
+      <h1 className={classes.randomPostHeader}>RANDOM POST</h1>
       <hr className={classes.randomPostHeader}></hr>
       {randomPost && randomPost.url ? (
         <Card className={classes.randomPost}>
