@@ -5,12 +5,12 @@ import Banner from "../components/Banners/Banners"
 import MainArticles from "../components/MainArticles/MainArticles"
 import Grid from '@material-ui/core/Grid';
 
+
 const HomePage = () => {
   return (
     <Fragment>
       <Banner/>
-      <Grid container>
-        <Grid item xs={1}></Grid>
+      <Grid container spacing={2}>
         <Grid item xs={8} >
           <MainArticles />
         </Grid>

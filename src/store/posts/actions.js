@@ -34,3 +34,20 @@ export async function getPostById(id) {
   const responseJson = await response.json();
   return responseJson;
 }
+
+export async function createPost(postObject) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "api-key": "PX4cLpwBFHQ1BbAQycY1htf8",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postObject),
+  };
+  const response = await fetch("https://dev.to/api/articles/", requestOptions);
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw new Error("Something went wrong");
+  }
+}
