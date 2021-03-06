@@ -12,6 +12,7 @@ import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
+  root: { width: 445 },
   randomPostHeader: { color: theme.palette.header.primary },
   randomPost: {
     marginTop: "38px",
@@ -57,7 +58,7 @@ const RandomPost = () => {
     setRandomPost(randomizer(minimum, maximum, data));
   }, [loading]);
   return (
-    <React.Fragment>
+    <div className={classes.root}>
       <h1 className={classes.randomPostHeader}>Random post</h1>
       <hr className={classes.randomPostHeader}></hr>
       {randomPost && randomPost.url ? (
@@ -91,7 +92,7 @@ const RandomPost = () => {
       ) : (
         ""
       )}
-    </React.Fragment>
+    </div>
   );
 };
 
