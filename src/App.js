@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Banner from "./components/Banners/Banners";
+
 import HomePage from "./pages/HomePage";
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
@@ -56,6 +58,7 @@ function App() {
         <Grid container className={classes.app}>
           <Grid item xs={12}>
             <NavBar />
+            <Banner />
           </Grid>
           <Grid
             item
