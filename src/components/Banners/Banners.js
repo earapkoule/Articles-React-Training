@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
   gridTitle: {
     color: theme.palette.text.header,
   },
-  tileBar: { height: 471, fontSize: "3rem" },
+  tileBar: { height: 471 },
+  tileBarLabel: { fontSize: "24px" },
   chipCustom: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.header,
@@ -70,7 +71,7 @@ const Banner = () => {
               />
               <GridListTileBar
                 title={tile.title}
-                classes={{ root: classes.tileBar }}
+                classes={{ root: classes.tileBar, title: classes.tileBarLabel }}
               />
             </Link>
           </GridListTile>
