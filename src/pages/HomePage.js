@@ -11,7 +11,7 @@ const HomePage = () => {
         <Grid item xs={8}>
           <MainArticles />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={4}>
           <PopularPosts />
           <RandomPost />
         </Grid>

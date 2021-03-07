@@ -13,6 +13,7 @@ import { CalendarIcon, CommentsIcon, EyeIcon } from "../../utils/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   mainParsedPost: {
     color: theme.palette.text.primary,
     fontSize: "18px",
+    width: "100%",
   },
   chipCustom: {
     display: "flex",
@@ -58,15 +60,12 @@ const PostPage = () => {
   const { id } = useParams();
   useEffect(() => {
     getPostById(id).then((response) => setPost(response));
-  }, []);
+  }, [post]);
   return (
     post && (
       <React.Fragment>
         <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <CategoryBanner post={post} />
-          </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={8}>
             <MainPostBanner post={post} />
             <Grid item xs={12} className={classes.root}>
               <Chip
@@ -100,7 +99,7 @@ const PostPage = () => {
                 style={{ marginLeft: "18px" }}
               >
                 {CalendarIcon}
-                {post.published_at}
+                {new Date(post.published_at).toLocaleDateString()}
               </Typography>
               <Typography
                 className={classes.mainPost.content}
@@ -121,7 +120,7 @@ const PostPage = () => {
                 {post.public_reactions_count}
               </Typography>
             </Grid>
-            <Grid item xs={12} className={classes.root}>
+            <Grid item xs={12}>
               {" "}
               <div
                 className={classes.mainParsedPost}
@@ -131,7 +130,7 @@ const PostPage = () => {
               ></div>
             </Grid>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={4}>
             <PopularPosts />
             <RandomPost />
           </Grid>

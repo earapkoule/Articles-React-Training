@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { GET_ALL_POSTS } from "../../utils/apiRoutes";
 import { useFetch } from "../../utils/fetchHook";
 import { makeStyles } from "@material-ui/core/styles";
 import calendar from "../../images/calendar.png";
 import comment from "../../images/comment.png";
 import eye from "../../images/eye.png";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles(() => ({
   icon: {
@@ -58,7 +59,13 @@ const MainArticles = () => {
             <h2 style={{ textAlign: "center" }}>{tile.description}</h2>
           </div>
           <div style={{ textAlign: "right" }}>
-            <Link>READ MORE</Link>
+            <Link
+              underline="none"
+              component={RouterLink}
+              to={`/posts/${tile.id}`}
+            >
+              READ MORE
+            </Link>
           </div>
         </div>
       ))}

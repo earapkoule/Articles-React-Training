@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  useLocation,
+  Switch,
+  Route,
+} from "react-router-dom";
 import Banner from "./components/Banners/Banners";
+import CategoryBanner from "./components/Banners/CategoryBanner";
 
 import HomePage from "./pages/HomePage";
 import BlogPage from "./pages/BlogPage";
@@ -30,7 +36,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((_theme) => ({
   app: {
-    background: "#FFFFFF",
+    background: "#F8F8F8",
   },
 
   content: {
@@ -50,7 +56,8 @@ function App() {
   const classes = useStyles();
   const isTablet = useMediaQuery("(max-width:960px)");
   useEffect(() => dispatch(getAllPosts()), []);
-
+  const location = window.location;
+  console.log("location", location);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -58,7 +65,8 @@ function App() {
         <Grid container className={classes.app}>
           <Grid item xs={12}>
             <NavBar />
-            <Banner />
+
+            {location !== "/" ? <Banner /> : <CategoryBanner />}
           </Grid>
           <Grid
             item
