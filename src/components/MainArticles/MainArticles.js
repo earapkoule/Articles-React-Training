@@ -16,6 +16,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const MainArticles = () => {
+  const classes = useStyles();
+
   const [data, loading] = useFetch(GET_ALL_POSTS);
   const [mainArticle, setMainArticle] = useState([]);
   const tileData = data.slice(3, 6);
@@ -24,8 +26,6 @@ const MainArticles = () => {
   useEffect(() => {
     setMainArticle(tileData);
   }, [loading]);
-
-  const classes = useStyles();
 
   return (
     <div>
