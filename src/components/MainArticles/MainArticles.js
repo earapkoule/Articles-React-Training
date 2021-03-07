@@ -1,39 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { GET_ALL_POSTS } from "../../utils/apiRoutes";
-import { useFetch } from "../../utils/fetchHook";
 import { makeStyles } from "@material-ui/core/styles";
 import calendar from "../../images/calendar.png";
 import comment from "../../images/comment.png";
 import eye from "../../images/eye.png";
 import Link from "@material-ui/core/Link";
+import { getCategoryPosts } from "../../store/posts/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles(() => ({
-
   icon: {
     maxWidth: 10,
     marginLeft: "1em",
   },
-
 }));
 
-const MainArticles = () => {
-  const classes = useStyles();
+const MainArticles = (props) => {
+  const dispatch = useDispatch();
 
-  const [data, loading] = useFetch(GET_ALL_POSTS);
-  const [mainArticle, setMainArticle] = useState([]);
-  const tileData = data.slice(3, 6);
-  console.log(tileData);
+  const classes = useStyles();
+  const categoryPosts = useSelector((state) => state.posts.categoryPosts);
+  const tileData = categoryPosts.slice(3, 6);
 
   useEffect(() => {
-    setMainArticle(tileData);
-  }, [loading]);
+    dispatch(getCategoryPosts(props.tag));
+  }, [props.tag]);
 
   return (
 
     <div>
       {tileData.map((tile) => (
-        <div style={{ margin: "3em" }}>
+        <div style={{ margin: "3em" }} key={tile.id}>
           <div>
             <img
               width="100%"

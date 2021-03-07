@@ -12,7 +12,7 @@ const BlogPage = () => {
     <Fragment>
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <MainArticles />
+          <MainArticles tag={category} />
         </Grid>
         <Grid item xs={4}>
           <PopularPosts tag={category} />
