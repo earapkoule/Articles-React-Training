@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 3,
     marginTop: "35px",
     marginBottom: "25px",
+    marginRight: "10px"
   },
   mainPost: {
     marginTop: "38px",
@@ -61,6 +62,7 @@ const PostPage = () => {
   useEffect(() => {
     getPostById(id).then((response) => setPost(response));
   }, [post]);
+
   return (
     post && (
       <React.Fragment>
@@ -68,10 +70,18 @@ const PostPage = () => {
           <Grid item xs={8}>
             <MainPostBanner post={post} />
             <Grid item xs={12} className={classes.root}>
-              <Chip
-                className={classes.chipCustom}
-                label={post.tag_list ? post.tag_list[0] : ""}
-              />
+              {post.tag_list ? 
+                post.tag_list.split(",").map((tile) =>
+                <Chip
+                  className={classes.chipCustom}
+                  label={tile}
+                />)
+                :
+                <Chip
+                  className={classes.chipCustom}
+                  label=""
+                />
+              }
             </Grid>
             <Grid item xs={12} className={classes.root}>
               <Typography
