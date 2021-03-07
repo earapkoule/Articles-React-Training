@@ -54,6 +54,7 @@ const Banner = () => {
     <div className={classes.bannerWrapper}>
       <GridList className={classes.gridList} cols={3}>
         {tileData.map((tile) => (
+
           <GridListTile
             key={tile.social_image}
             style={{ height: "471px", padding: 0 }}
@@ -72,6 +73,7 @@ const Banner = () => {
               <GridListTileBar
                 title={tile.title}
                 classes={{ root: classes.tileBar, title: classes.tileBarLabel }}
+
               />
             </Link>
           </GridListTile>

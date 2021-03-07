@@ -9,10 +9,12 @@ import eye from "../../images/eye.png";
 import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles(() => ({
+
   icon: {
     maxWidth: 10,
     marginLeft: "1em",
   },
+
 }));
 
 const MainArticles = () => {
@@ -28,6 +30,7 @@ const MainArticles = () => {
   }, [loading]);
 
   return (
+
     <div>
       {tileData.map((tile) => (
         <div style={{ margin: "3em" }}>
@@ -69,6 +72,7 @@ const MainArticles = () => {
           </div>
         </div>
       ))}
+
     </div>
   );
 };
