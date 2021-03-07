@@ -5,7 +5,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import logo from "../../images/logo.png";
-import DrawerSidebar from "./DrawerSidebar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
