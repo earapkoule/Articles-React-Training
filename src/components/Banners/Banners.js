@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { GET_ALL_POSTS } from "../../utils/apiRoutes";
 import { useFetch } from "../../utils/fetchHook";
+import { getPopularPosts } from "../../store/posts/actions";
+import { useDispatch, useSelector } from "react-redux";
 import GridList from "@material-ui/core/GridList";
 import { Link } from "react-router-dom";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -39,22 +41,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Banner = () => {
+const Banner = (props) => {
   const classes = useStyles();
 
-  const [data, loading] = useFetch(GET_ALL_POSTS);
-  const tileData = data.slice(0, 3);
-  const [banner, setBanner] = useState([]);
+  const dispatch = useDispatch();
+  const popularPosts = useSelector((state) => state.posts.popularPosts);
 
   useEffect(() => {
-    setBanner(tileData);
-  }, [loading]);
+    dispatch(getPopularPosts(props.tag));
+  }, [props.tag]);
 
   return (
     <div className={classes.bannerWrapper}>
       <GridList className={classes.gridList} cols={3}>
-        {tileData.map((tile) => (
-
+        {popularPosts.slice(0, 3).map((tile) => (
           <GridListTile
             key={tile.social_image}
             style={{ height: "471px", padding: 0 }}
@@ -73,7 +73,6 @@ const Banner = () => {
               <GridListTileBar
                 title={tile.title}
                 classes={{ root: classes.tileBar, title: classes.tileBarLabel }}
-
               />
             </Link>
           </GridListTile>
