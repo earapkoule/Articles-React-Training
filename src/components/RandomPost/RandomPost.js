@@ -12,7 +12,7 @@ import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
-  root: { width: 445 },
+  root: { maxWidth: 445, width: "100%" },
   randomPostHeader: { color: theme.palette.header.primary },
   randomPost: {
     marginTop: "38px",
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.primary,
       height: 60,
       maxHeight: 60,
-      textSize: "19px",
+      fontSize: "19px",
     },
   },
   chipCustom: {
@@ -43,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
 const randomizer = (minimum, maximum, allPosts) => {
   const randomNumber =
     Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-  //console.log(allPosts);
+  //Cover Image guard
+  if (allPosts[randomNumber] && !allPosts[randomNumber].cover_image) {
+    return randomizer(minimum, maximum, allPosts);
+  }
   return allPosts[randomNumber];
 };
 
@@ -59,11 +62,15 @@ const RandomPost = () => {
   }, [loading]);
   return (
     <div className={classes.root}>
-      <h1 className={classes.randomPostHeader}>Random post</h1>
+      <h1 className={classes.randomPostHeader}>RANDOM POST</h1>
       <hr className={classes.randomPostHeader}></hr>
       {randomPost && randomPost.url ? (
         <Card className={classes.randomPost}>
-          <Link underline="none" component={RouterLink} to={randomPost.url}>
+          <Link
+            underline="none"
+            component={RouterLink}
+            to={`/posts/${randomPost.id}`}
+          >
             <CardActionArea>
               <Chip
                 className={classes.chipCustom}
