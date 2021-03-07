@@ -51,3 +51,20 @@ export async function createPost(postObject) {
     throw new Error("Something went wrong");
   }
 }
+
+export function getCategoryPosts(tag) {
+  return async (dispatch) => {
+    const urlSafe = new URL("https://dev.to/api/articles");
+    const params = {};
+    if (tag) params.tag = tag;
+    urlSafe.search = new URLSearchParams(params).toString();
+
+    const response = await fetch(urlSafe);
+    const responseJson = await response.json();
+    dispatch(setCategoryPosts(responseJson));
+  };
+}
+
+export function setCategoryPosts(categoryPosts) {
+  return { type: "Set category posts", categoryPosts };
+}

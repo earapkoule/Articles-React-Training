@@ -1,6 +1,7 @@
 const initialState = {
   allPosts: [],
   popularPosts: [],
+  categoryPosts: [],
 };
 
 function postsReducer(state = initialState, action) {
@@ -9,6 +10,9 @@ function postsReducer(state = initialState, action) {
   }
   if (action.type === "Set popular posts") {
     return { ...state, popularPosts: action.popularPosts };
+  }
+  if (action.type === "Set category posts") {
+    return { ...state, categoryPosts: action.categoryPosts };
   }
   return state;
 }
