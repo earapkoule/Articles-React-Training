@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 3,
     position: "absolute",
     top: "65%",
-    left: "50%",
+    left: "44%",
     zIndex: 99999,
   },
 }));
