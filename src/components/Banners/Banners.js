@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { GET_ALL_POSTS } from "../../utils/apiRoutes";
-import { useFetch } from "../../utils/fetchHook";
+import React, { useEffect } from "react";
 import { getPopularPosts } from "../../store/posts/actions";
 import { useDispatch, useSelector } from "react-redux";
 import GridList from "@material-ui/core/GridList";
@@ -26,8 +24,11 @@ const useStyles = makeStyles((theme) => ({
   gridTitle: {
     color: theme.palette.text.header,
   },
-  tileBar: { height: 471 },
-  tileBarLabel: { fontSize: "24px" },
+  tileBar: { wordWrap: "break-word", height: 471 },
+  tileBarLabel: {
+    fontSize: "24px",
+    marginTop: "290px",
+  },
   chipCustom: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.header,
